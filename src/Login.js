@@ -23,7 +23,9 @@ class Login extends Component {
       signInSuccess: () => false
     }
   }
-
+  componentDidMount(){
+    document.title = "Musify";
+  }
   handleChange(e) {
     this.setState({ [e.target.name]: e.target.value });
   }

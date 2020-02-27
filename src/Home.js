@@ -10,7 +10,11 @@ import song1 from './audio/2.mp3';
 import song2 from './audio/3.mp3';
 import song3 from './audio/4.mp3';
 import song4 from './audio/5.mp3';
-
+import song5 from './audio/6.mp3';
+import song6 from './audio/7.m4a';
+import song7 from './audio/8.mp3';
+import song8 from './audio/9.mp3';
+import song9 from './audio/10.mp3';
 
 class Home extends Component {
     constructor(props) {
@@ -28,11 +32,21 @@ class Home extends Component {
             {song_name: 'Adada Mazhaida',   song_artist : 'Yuvan Shankar Raja', song_data: song0},
             {song_name: 'En Kadhal Solla',  song_artist : 'Yuvan Shankar Raja', song_data: song1},
             {song_name: 'Poongatre',        song_artist : 'Yuvan Shankar Raja', song_data: song2},
-            {song_name: 'Suthudhe Bhoomi',  song_artist : 'Anirudh',            song_data: song3},
-            {song_name: 'Thuli Thuli',      song_artist : 'Anirudh',            song_data: song4},
+            {song_name: 'Suthudhe Bhoomi',  song_artist : 'Yuvan Shankar Raja',            song_data: song3},
+            {song_name: 'Thuli Thuli',      song_artist : 'Yuvan Shankar Raja',            song_data: song4},
+            {song_name: 'Yedho Ondru',      song_artist : 'Yuvan Shankar Raja',            song_data: song5},
+            {song_name: 'Chumma Kizhi',      song_artist : 'Anirudh',            song_data: song6},
+            {song_name: 'Nenjae Yezhu',      song_artist : 'A.R.Rahman',            song_data: song7},
+            {song_name: 'Ey Sandakaara',      song_artist : 'Santhosh Narayanan',            song_data: song8},
+            {song_name: 'Blood Bath',      song_artist : 'G.V.Prakash',            song_data: song9},
         ]
 
     } 
+
+    componentDidMount(){
+        document.title = "Musify";
+      }
+
     logout() {
         firebase.auth().signOut();
     }
