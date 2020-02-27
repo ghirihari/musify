@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import firebase from './config/fire';
-import firestore from 'firebase';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import SongTile from './SongTile';
-import Artist from './artist';
 
 import song0 from './audio/1.mp3';
 import song1 from './audio/2.mp3';
@@ -78,7 +76,7 @@ class Home extends Component {
             <div>
                 <div>
                             <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-                            <Navbar.Brand >Musify</Navbar.Brand>
+                            <Navbar.Brand onClick={() => {this.select('Home')}}>Musify</Navbar.Brand>
                             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                             <Navbar.Collapse id="responsive-navbar-nav">
                                 <Nav className="mr-auto">
@@ -91,7 +89,7 @@ class Home extends Component {
                             </Navbar.Collapse>
                             </Navbar>
                     {/* <nav className="navbar navbar-expand-lg navbar-light bg-light">
-                        <button className="navbar-brand btn btn-link" href="#">Musify</button>
+                        <button className="navbar-brand btn btn-link" href="#"onClick={() => {this.select('Home')}}>Musify</button>
                         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                             <span className="navbar-toggler-icon"></span>
                         </button>
@@ -112,7 +110,7 @@ class Home extends Component {
                     </nav> */}
                 </div>    
                 <div className="artist-page">
-                    <h2 className="text-center">Home</h2>   
+                    <h2 className="text-left">Home</h2>   
                                 {this.songs.map((value,index) => {
                                         return (
                                             <div className="row tile">   
@@ -136,7 +134,7 @@ class Home extends Component {
             <div>
             <div>
             <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-                            <Navbar.Brand >Musify</Navbar.Brand>
+                            <Navbar.Brand onClick={() => {this.select('Home')}}>Musify</Navbar.Brand>
                             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                             <Navbar.Collapse id="responsive-navbar-nav">
                                 <Nav className="mr-auto">
@@ -153,7 +151,6 @@ class Home extends Component {
             <div className="artist-page">
                     <h2 className="">Artists</h2>   
                                 {distinct.map((value,index) => {
-                                    this.state.artist = value;
                                         return (
                                             <div className="row tile">   
                                                 <div className="col-6">   
@@ -182,7 +179,7 @@ class Home extends Component {
                 <div>
                 <div>
                 <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-                            <Navbar.Brand >Musify</Navbar.Brand>
+                            <Navbar.Brand onClick={() => {this.select('Home')}}>Musify</Navbar.Brand>
                             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                             <Navbar.Collapse id="responsive-navbar-nav">
                                 <Nav className="mr-auto">
@@ -199,7 +196,6 @@ class Home extends Component {
                 <div className="artist-page">
                         <h2 className="">Artists</h2>   
                                     {distinct.map((value,index) => {
-                                        this.state.artist = value;
                                             return (
                                                 <div className="row tile">   
                                                     <div className="col-6">   
