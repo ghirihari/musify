@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import firebase from './config/fire';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
+import Col from 'react-bootstrap/Col';
 import SongTile from './SongTile';
 
 import song0 from './audio/1.mp3';
@@ -114,13 +115,13 @@ class Home extends Component {
                                 {this.songs.map((value,index) => {
                                         return (
                                             <div className="row tile">   
-                                                <div className="col-8">
+                                                 <Col xs="12" lg="8">   
                                                     <label className="songTitle">{value.song_name}</label><br></br>
                                                     <label className="songArtist">{value.song_artist}</label>
-                                                </div>
-                                                <div className="col-4">
+                                                </Col>
+                                                <Col xs="12" lg="4">   
                                                     <SongTile name={value.song_data} id={index} />
-                                                </div>  
+                                                </Col>  
                                             </div>    
                                             )    
                                     })
@@ -153,16 +154,16 @@ class Home extends Component {
                                 {distinct.map((value,index) => {
                                         return (
                                             <div className="row tile">   
-                                                <div className="col-6">   
+                                                 <Col xs="12" lg="6">   
                                                     <button className="songArtist btn btn-link" 
                                                     onClick ={() => {this.show(value)}}>
                                                         {value}</button>
                                                     
-                                                </div>
+                                                </Col>
 
-                                                <div className="col-6" id="new">   
+                                                <Col xs="12" lg="6">      
                                                    
-                                                </div>
+                                                </Col>
                                             </div>    
                                             )
                                     }
@@ -198,14 +199,14 @@ class Home extends Component {
                                     {distinct.map((value,index) => {
                                             return (
                                                 <div className="row tile">   
-                                                    <div className="col-6">   
+                                                    <Col xs="12" lg="6">   
                                                         <button className="songArtist btn btn-link" 
                                                         onClick ={() => {this.show(value)}}>
                                                             {value}</button>
                                                         
-                                                    </div>
+                                                    </Col>
     
-                                                    <div className="col-6" id="new">   
+                                                    <Col xs="12" lg="6">   
                                                     {this.artist_songs.map((val,ind) => {
                                                         if(value == val.song_artist)
                                                             return (
@@ -221,7 +222,7 @@ class Home extends Component {
                                                                 )    
                                                         })
                                                     }
-                                                    </div>
+                                                    </Col>
                                                 </div>    
                                                 )
                                         }
