@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import firebase from './config/fire';
 import firestore from 'firebase';
-
+import Navbar from 'react-bootstrap/Navbar';
+import Nav from 'react-bootstrap/Nav';
 import SongTile from './SongTile';
 import Artist from './artist';
 
@@ -76,25 +77,42 @@ class Home extends Component {
             return (
             <div>
                 <div>
-                    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                        <button class="navbar-brand btn btn-link" href="#">Musify</button>
-                        <div class="collapse navbar-collapse" id="navbarNav">
-                        <ul class="navbar-nav">
-                            <li class="nav-item active">
-                                <button class="nav-link btn btn-link" onClick={() => {this.select('Home')}}>Home <span class="sr-only">(current)</span></button>
+                            <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+                            <Navbar.Brand >Musify</Navbar.Brand>
+                            <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+                            <Navbar.Collapse id="responsive-navbar-nav">
+                                <Nav className="mr-auto">
+                                <Nav.Link onClick={() => {this.select('Home')}}>Home</Nav.Link>
+                                <Nav.Link onClick={() => {this.select('Artist')}}>Artists</Nav.Link>
+                                </Nav>
+                                <Nav>
+                                <Nav.Link onClick={this.logout}>Logout</Nav.Link>
+                                </Nav>
+                            </Navbar.Collapse>
+                            </Navbar>
+                    {/* <nav className="navbar navbar-expand-lg navbar-light bg-light">
+                        <button className="navbar-brand btn btn-link" href="#">Musify</button>
+                        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                            <span className="navbar-toggler-icon"></span>
+                        </button>
+                        <div className="collapse navbar-collapse" id="navbarNav">
+                        <ul className="navbar-nav">
+                            <li className="nav-item active">
+                                <button className="nav-link btn btn-link" onClick={() => {this.select('Home')}}>Home <span className="sr-only">(current)</span></button>
                             </li>
-                            <li class="nav-item">
-                                <button class="nav-link btn btn-link" onClick={() => {this.select('Artist')}}>Artists</button>
+                            <li className="nav-item">
+                                <button className="nav-link btn btn-link" onClick={() => {this.select('Artist')}}>Artists</button>
                             </li>
-                        <li class="nav-item my-lg-0">
-                            <button class="btn btn-dark btn-block" onClick={this.logout}>Logout</button>
+                        <li className="nav-item my-lg-0">
+                            <button className="btn btn-dark btn-block" onClick={this.logout}>Logout</button>
                         </li>
                         </ul>
                         </div>
-                    </nav>
+                        
+                    </nav> */}
                 </div>    
                 <div className="artist-page">
-                    <h2 className="text-center">All Songs</h2>   
+                    <h2 className="text-center">Home</h2>   
                                 {this.songs.map((value,index) => {
                                         return (
                                             <div className="row tile">   
@@ -117,23 +135,19 @@ class Home extends Component {
          return(
             <div>
             <div>
-                <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                    <button class="navbar-brand btn btn-link" href="#">Musify</button>
-                    <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav">
-                        <li class="nav-item active">
-                            <button class="nav-link btn btn-link" onClick={() => {this.select('Home')}}>Home <span class="sr-only">(current)</span></button>
-                        </li>
-                        <li class="nav-item">
-                            <button class="nav-link btn btn-link" onClick={() => {this.select('Artist')}}>Artists</button>
-                        </li>
-                        <li class="nav-item my-lg-0">
-                            <button class="btn btn-dark btn-block" onClick={this.logout}>Logout</button>
-                        </li>
-            
-                    </ul>
-                    </div>
-                </nav>
+            <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+                            <Navbar.Brand >Musify</Navbar.Brand>
+                            <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+                            <Navbar.Collapse id="responsive-navbar-nav">
+                                <Nav className="mr-auto">
+                                <Nav.Link onClick={() => {this.select('Home')}}>Home</Nav.Link>
+                                <Nav.Link onClick={() => {this.select('Artist')}}>Artists</Nav.Link>
+                                </Nav>
+                                <Nav>
+                                <Nav.Link onClick={this.logout}>Logout</Nav.Link>
+                                </Nav>
+                            </Navbar.Collapse>
+                            </Navbar>
             </div>
 
             <div className="artist-page">
@@ -167,23 +181,19 @@ class Home extends Component {
             return(
                 <div>
                 <div>
-                    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                        <button class="navbar-brand btn btn-link" href="#">Musify</button>
-                        <div class="collapse navbar-collapse" id="navbarNav">
-                        <ul class="navbar-nav">
-                            <li class="nav-item active">
-                                <button class="nav-link btn btn-link" onClick={() => {this.select('Home')}}>Home <span class="sr-only">(current)</span></button>
-                            </li>
-                            <li class="nav-item">
-                                <button class="nav-link btn btn-link" onClick={() => {this.select('Artist')}}>Artists</button>
-                            </li>
-                            <li class="nav-item my-lg-0">
-                                <button class="btn btn-dark btn-block" onClick={this.logout}>Logout</button>
-                            </li>
-                
-                        </ul>
-                        </div>
-                    </nav>
+                <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+                            <Navbar.Brand >Musify</Navbar.Brand>
+                            <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+                            <Navbar.Collapse id="responsive-navbar-nav">
+                                <Nav className="mr-auto">
+                                <Nav.Link onClick={() => {this.select('Home')}}>Home</Nav.Link>
+                                <Nav.Link onClick={() => {this.select('Artist')}}>Artists</Nav.Link>
+                                </Nav>
+                                <Nav>
+                                <Nav.Link onClick={this.logout}>Logout</Nav.Link>
+                                </Nav>
+                            </Navbar.Collapse>
+                            </Navbar>
                 </div>
     
                 <div className="artist-page">
