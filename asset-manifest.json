@@ -1,31 +1,36 @@
 {
   "files": {
     "main.css": "/musify/static/css/main.5203fb12.chunk.css",
-    "main.js": "/musify/static/js/main.c274d1b8.chunk.js",
-    "main.js.map": "/musify/static/js/main.c274d1b8.chunk.js.map",
+    "main.js": "/musify/static/js/main.46f40ab7.chunk.js",
+    "main.js.map": "/musify/static/js/main.46f40ab7.chunk.js.map",
     "runtime-main.js": "/musify/static/js/runtime-main.6ee09cec.js",
     "runtime-main.js.map": "/musify/static/js/runtime-main.6ee09cec.js.map",
     "static/css/2.7284ee2b.chunk.css": "/musify/static/css/2.7284ee2b.chunk.css",
-    "static/js/2.54eef413.chunk.js": "/musify/static/js/2.54eef413.chunk.js",
-    "static/js/2.54eef413.chunk.js.map": "/musify/static/js/2.54eef413.chunk.js.map",
+    "static/js/2.a90e08bc.chunk.js": "/musify/static/js/2.a90e08bc.chunk.js",
+    "static/js/2.a90e08bc.chunk.js.map": "/musify/static/js/2.a90e08bc.chunk.js.map",
     "index.html": "/musify/index.html",
-    "precache-manifest.58cbc49057f22a1f7ffd1a270bfa0e8b.js": "/musify/precache-manifest.58cbc49057f22a1f7ffd1a270bfa0e8b.js",
+    "precache-manifest.411a7e510cf2e4fde72332bd164deded.js": "/musify/precache-manifest.411a7e510cf2e4fde72332bd164deded.js",
     "service-worker.js": "/musify/service-worker.js",
     "static/css/2.7284ee2b.chunk.css.map": "/musify/static/css/2.7284ee2b.chunk.css.map",
     "static/css/main.5203fb12.chunk.css.map": "/musify/static/css/main.5203fb12.chunk.css.map",
-    "static/js/2.54eef413.chunk.js.LICENSE.txt": "/musify/static/js/2.54eef413.chunk.js.LICENSE.txt",
+    "static/js/2.a90e08bc.chunk.js.LICENSE.txt": "/musify/static/js/2.a90e08bc.chunk.js.LICENSE.txt",
     "static/media/1.mp3": "/musify/static/media/1.686d09a7.mp3",
+    "static/media/10.mp3": "/musify/static/media/10.5aac6582.mp3",
     "static/media/2.mp3": "/musify/static/media/2.4cded3ba.mp3",
     "static/media/3.mp3": "/musify/static/media/3.b41aae94.mp3",
     "static/media/4.mp3": "/musify/static/media/4.cfe7308e.mp3",
     "static/media/5.mp3": "/musify/static/media/5.be97d4ed.mp3",
+    "static/media/6.mp3": "/musify/static/media/6.e094f132.mp3",
+    "static/media/7.m4a": "/musify/static/media/7.48238397.m4a",
+    "static/media/8.mp3": "/musify/static/media/8.7a4e6ed8.mp3",
+    "static/media/9.mp3": "/musify/static/media/9.da6d6a40.mp3",
     "static/media/font-awesome.min.css": "/musify/static/media/fontawesome-webfont.fee66e71.woff"
   },
   "entrypoints": [
     "static/js/runtime-main.6ee09cec.js",
     "static/css/2.7284ee2b.chunk.css",
-    "static/js/2.54eef413.chunk.js",
+    "static/js/2.a90e08bc.chunk.js",
     "static/css/main.5203fb12.chunk.css",
-    "static/js/main.c274d1b8.chunk.js"
+    "static/js/main.46f40ab7.chunk.js"
   ]
 }
