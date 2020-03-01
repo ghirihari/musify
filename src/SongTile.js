@@ -1,63 +1,74 @@
 import React, { Component } from 'react';
+import Col from 'react-bootstrap/Col';
 import 'font-awesome/css/font-awesome.min.css';
 
 class SongTile extends Component {
     constructor(props) {
         super(props);
         this.playAudio = this.playAudio.bind(this);
-        this.pauseAudio = this.pauseAudio.bind(this);
         
         this.state
         = { 
              min: 0 ,
              sec: 0 ,
              current: 0,
+             playing: false,
+             icon: 'fa fa-play',
+             btnColor : 'btn-lg btn-block btn-primary',
          }; 
+         this.audioEl = null;
+    }
+
+    componentDidMount() {
+        this.audioEl = document.getElementsByClassName("audio-element")[this.props.id];
+        console.log(this.audioEl.duration);
+        
     }
 
     playAudio() {
-
-        var audioEl = document.getElementsByClassName("audio-element")[this.props.id];
-        console.log(audioEl);
-        audioEl.play();
-        this.setState({min: parseInt(audioEl.duration/60), sec: parseInt(audioEl.duration%60),  }) ;
+        if(!this.state.playing)
+        {
+            this.audioEl.play();
+            this.setState({playing:true})
+            this.setState({icon:'fa fa-pause'}) 
+            this.setState({btnColor:'btn-lg btn-block btn-warning'}) 
+        }
+        else{
+            this.audioEl.pause();
+            this.setState({playing:false})
+            this.setState({icon:'fa fa-play'})
+            this.setState({btnColor:'btn-lg btn-block btn-primary'})
+        }
+ 
+        this.setState({min: parseInt(this.audioEl.duration/60), sec: parseInt(this.audioEl.duration%60),  }) ;
         console.log();
-        setInterval(() => this.setState({current: parseInt(audioEl.currentTime)}),1000);
+        setInterval(() => this.setState({current: parseInt(this.audioEl.currentTime)}),1000);
     }
-
-    pauseAudio() {
-        var audioEl = document.getElementsByClassName("audio-element")[this.props.id];
-        audioEl.pause()
-    }
-
 
     render()
     {
         return(
-            <div className="btnGroup"> 
-            <audio className="audio-element">
-                    <source src={this.props.name}></source>
-            </audio>
-
-            <div className="row timer">
-                <div className="col-12 p-1">
-                    <label className="duration" id="duration"> 00:{this.state.current} - {this.state.min}:{this.state.sec}</label>
-                </div>
+            <div className="row tile">   
+                <Col xs="5" lg="6">   
+                    <label className="songTitle">{this.props.song_name}</label><br></br>
+                    <label className="songArtist">{this.props.song_artist}</label>
+                </Col>
+                <Col xs="4" lg="4">     
+                    <audio className="audio-element">
+                            <source src={this.props.song_data}></source>
+                    </audio>
+                        <div className="timer">
+                                <label className="duration" id="duration"> 00:{this.state.current} - {this.state.min}:{this.state.sec}</label>
+                        </div>
+                </Col>
+                <Col xs="3" lg="2">
+                            <div className=" p-1">
+                                <button id="play" className={this.state.btnColor} onClick={this.playAudio}>
+                                    <i  id="playIcon" className={this.state.icon}></i>
+                                </button>
+                        </div>
+                </Col>
             </div>
-
-            <div className="row ">
-                <div className="col-6 p-1">
-                    <button id="play" className="btn-lg btn-block btn-primary" onClick={this.playAudio}>
-                        <i  id="playIcon" className="fa fa-play"></i>
-                    </button>
-                </div>
-                <div className="col-6 p-1">
-                    <button id="pause" className="btn-lg btn-warning btn-block" onClick={this.pauseAudio}>
-                            <i className="fa fa-pause"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
         
         )
     }

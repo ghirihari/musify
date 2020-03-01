@@ -22,6 +22,7 @@ class Home extends Component {
        this.logout = this.logout.bind(this);
         this.select = this.select.bind(this);
         this.state = {
+            song : null,
             click : 0,
             menu : 'Home',
             artist: ''
@@ -45,6 +46,9 @@ class Home extends Component {
 
     componentDidMount(){
         document.title = "Musify";
+        fetch('https://jsonplaceholder.typicode.com/users')
+        .then( data => data.json())
+        .then( users => console.log(users));
       }
 
     logout() {
@@ -103,40 +107,16 @@ class Home extends Component {
                                 </Nav>
                             </Navbar.Collapse>
                             </Navbar>
-                    {/* <nav className="navbar navbar-expand-lg navbar-light bg-light">
-                        <button className="navbar-brand btn btn-link" href="#"onClick={() => {this.select('Home')}}>Musify</button>
-                        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                            <span className="navbar-toggler-icon"></span>
-                        </button>
-                        <div className="collapse navbar-collapse" id="navbarNav">
-                        <ul className="navbar-nav">
-                            <li className="nav-item active">
-                                <button className="nav-link btn btn-link" onClick={() => {this.select('Home')}}>Home <span className="sr-only">(current)</span></button>
-                            </li>
-                            <li className="nav-item">
-                                <button className="nav-link btn btn-link" onClick={() => {this.select('Artist')}}>Artists</button>
-                            </li>
-                        <li className="nav-item my-lg-0">
-                            <button className="btn btn-dark btn-block" onClick={this.logout}>Logout</button>
-                        </li>
-                        </ul>
-                        </div>
-                        
-                    </nav> */}
                 </div>    
                 <div className="artist-page">
                     <h2 className="text-left">Home</h2>   
                                 {this.songs.map((value,index) => {
                                         return (
-                                            <div className="row tile">   
-                                                 <Col xs="12" lg="8">   
-                                                    <label className="songTitle">{value.song_name}</label><br></br>
-                                                    <label className="songArtist">{value.song_artist}</label>
-                                                </Col>
-                                                <Col xs="12" lg="4">   
-                                                    <SongTile name={value.song_data} id={index} />
-                                                </Col>  
-                                            </div>    
+                                            <SongTile 
+                                                        song_name={value.song_name} 
+                                                        song_artist={value.song_artist}
+                                                        song_data={value.song_data} 
+                                                        id={index} />    
                                             )    
                                     })
                                 }
@@ -169,14 +149,10 @@ class Home extends Component {
                                         return (
                                             <div className="row tile">   
                                                  <Col xs="12" lg="6">   
-                                                    <button className="songArtist btn btn-link" 
+                                                    <button className="artist btn btn-link" 
                                                     onClick ={() => {this.show(value)}}>
                                                         {value}</button>
                                                     
-                                                </Col>
-
-                                                <Col xs="12" lg="6">      
-                                                   
                                                 </Col>
                                             </div>    
                                             )
@@ -213,26 +189,23 @@ class Home extends Component {
                                     {distinct.map((value,index) => {
                                             return (
                                                 <div className="row tile">   
-                                                    <Col xs="12" lg="6">   
-                                                        <button className="songArtist btn btn-link" 
+                                                    <Col xs="12" lg="2">   
+                                                        <button className="artist btn btn-link" 
                                                         onClick ={() => {this.show(value)}}>
                                                             {value}</button>
                                                         
                                                     </Col>
     
-                                                    <Col xs="12" lg="6">   
+                                                    <Col xs="12" lg="10">   
                                                     {this.artist_songs.map((val,ind) => {
                                                         if(value == val.song_artist)
                                                             return (
-                                                                <div className="row tile">   
-                                                                    <div className="col-6">
-                                                                        <label className="songTitle">{val.song_name}</label><br></br>
-                                                                        <label className="songArtist">{val.song_artist}</label>
-                                                                    </div>
-                                                                    <div className="col-6">
-                                                                        <SongTile name={val.song_data} id={ind} />
-                                                                    </div>  
-                                                                </div>    
+                                                                <SongTile 
+                                                                    song_name={val.song_name} 
+                                                                    song_artist={val.song_artist}
+                                                                    song_data={val.song_data} 
+                                                                    id={ind} />    
+                                                        
                                                                 )    
                                                         })
                                                     }

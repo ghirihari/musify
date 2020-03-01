@@ -31,14 +31,14 @@
 .home-page .tile{
   background-color: #f4f4f4;
   border-bottom: 1px solid white;
-  padding: 20px;
+  padding: 0px;
 }
 
 
 .artist-page .tile{
   background-color: #f4f4f4;
   border-bottom: 1px solid white;
-  padding: 20px;
+  padding: 0px;
 }
 
 .songTitle
@@ -50,6 +50,10 @@
 .songArtist
 {
   font-weight: lighter;
+}
+
+.artist{
+  font-size: 30px;
 }
 
 .duration
