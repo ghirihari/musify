@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import firebase from './config/fire';
-import Navbar from 'react-bootstrap/Navbar';
-import Nav from 'react-bootstrap/Nav';
+import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import SongTile from './SongTile';
+import Navi from './Navi';
 
 import song0 from './audio/1.mp3';
 import song1 from './audio/2.mp3';
@@ -25,31 +25,34 @@ class Home extends Component {
             song : null,
             click : 0,
             menu : 'Home',
-            artist: ''
-
+            artist: '',
+            searchText: ''
         }
         this.artist_songs = []
         this.songs = [
             {song_name: 'Adada Mazhaida',   song_artist : 'Yuvan Shankar Raja', song_data: song0},
             {song_name: 'En Kadhal Solla',  song_artist : 'Yuvan Shankar Raja', song_data: song1},
             {song_name: 'Poongatre',        song_artist : 'Yuvan Shankar Raja', song_data: song2},
-            {song_name: 'Suthudhe Bhoomi',  song_artist : 'Yuvan Shankar Raja',            song_data: song3},
-            {song_name: 'Thuli Thuli',      song_artist : 'Yuvan Shankar Raja',            song_data: song4},
-            {song_name: 'Yedho Ondru',      song_artist : 'Yuvan Shankar Raja',            song_data: song5},
-            {song_name: 'Chumma Kizhi',      song_artist : 'Anirudh',            song_data: song6},
-            {song_name: 'Nenjae Yezhu',      song_artist : 'A.R.Rahman',            song_data: song7},
-            {song_name: 'Ey Sandakaara',      song_artist : 'Santhosh Narayanan',            song_data: song8},
-            {song_name: 'Blood Bath',      song_artist : 'G.V.Prakash',            song_data: song9},
+            {song_name: 'Suthudhe Bhoomi',  song_artist : 'Yuvan Shankar Raja', song_data: song3},
+            {song_name: 'Thuli Thuli',      song_artist : 'Yuvan Shankar Raja', song_data: song4},
+            {song_name: 'Yedho Ondru',      song_artist : 'Yuvan Shankar Raja', song_data: song5},
+            {song_name: 'Chumma Kizhi',      song_artist : 'Anirudh',           song_data: song6},
+            {song_name: 'Nenjae Yezhu',      song_artist : 'A.R.Rahman',        song_data: song7},
+            {song_name: 'Ey Sandakaara',      song_artist : 'Santhosh Narayanan', song_data: song8},
+            {song_name: 'Blood Bath',      song_artist : 'G.V.Prakash',         song_data: song9},
         ]
+        
+        this.unique = [];
+        this.distinct = [];
+            for( let i = 0; i < this.songs.length; i++ ){
+                if( !this.unique[this.songs[i].song_artist]){
+                  this.distinct.push(this.songs[i].song_artist);
+                  this.unique[this.songs[i].song_artist] = 1;
+                }
+              }
+              
 
     } 
-
-    componentDidMount(){
-        document.title = "Musify";
-        fetch('https://jsonplaceholder.typicode.com/users')
-        .then( data => data.json())
-        .then( users => console.log(users));
-      }
 
     logout() {
         firebase.auth().signOut();
@@ -68,7 +71,7 @@ class Home extends Component {
             if(value.song_artist == item)
                 this.artist_songs.push(value);    
         })
-        console.log(this.artist_songs)
+        // console.log(this.artist_songs)
     }
 
     select(item){
@@ -80,43 +83,39 @@ class Home extends Component {
 
     render() {
      
-        var unique = [];
-        var distinct = [];
-            for( let i = 0; i < this.songs.length; i++ ){
-                if( !unique[this.songs[i].song_artist]){
-                  distinct.push(this.songs[i].song_artist);
-                  unique[this.songs[i].song_artist] = 1;
-                }
-              }
-            
+        const songs = this.songs;
+        const searchText = this.state.searchText;
+
+        const filteredSongs = songs.filter(song => song.song_name.toLowerCase().includes(searchText.toLowerCase()));
             if(this.state.menu == "Home")
             {
             return (
             <div>
-                <div>
-                            <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-                            <Navbar.Brand onClick={() => {this.select('Home')}}>Musify</Navbar.Brand>
-                            <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-                            <Navbar.Collapse id="responsive-navbar-nav">
-                                <Nav className="mr-auto">
-                                <Nav.Link onClick={() => {this.select('Home')}}>Home</Nav.Link>
-                                <Nav.Link onClick={() => {this.select('Artist')}}>Artists</Nav.Link>
-                                </Nav>
-                                <Nav>
-                                <Nav.Link onClick={this.logout}>Logout</Nav.Link>
-                                </Nav>
-                            </Navbar.Collapse>
-                            </Navbar>
-                </div>    
-                <div className="artist-page">
-                    <h2 className="text-left">Home</h2>   
-                                {this.songs.map((value,index) => {
+                <Navi buttonClick={this.select.bind(this)}/>    
+                <div className="artist-page">   
+                        <Row className="p-1">
+                        <Col lg='4'></Col>
+                        <Col lg='4'>
+                            <div className="text-center">
+                                <input 
+                                    className="form-control"
+                                    type="search" 
+                                    placeholder="Search Songs"
+                                    onChange={e => this.setState({ searchText:e.target.value })}>    
+                                </input>
+                            </div>
+                        </Col>
+                        <Col lg='4'></Col>
+                        </Row>
+                                {filteredSongs.map((value,index) => {
                                         return (
+                                            <div key={value.song_name}>
                                             <SongTile 
                                                         song_name={value.song_name} 
                                                         song_artist={value.song_artist}
                                                         song_data={value.song_data} 
-                                                        id={index} />    
+                                                        id={index} />
+                                                        </div>    
                                             )    
                                     })
                                 }
@@ -128,24 +127,12 @@ class Home extends Component {
          return(
             <div>
             <div>
-            <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-                            <Navbar.Brand onClick={() => {this.select('Home')}}>Musify</Navbar.Brand>
-                            <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-                            <Navbar.Collapse id="responsive-navbar-nav">
-                                <Nav className="mr-auto">
-                                <Nav.Link onClick={() => {this.select('Home')}}>Home</Nav.Link>
-                                <Nav.Link onClick={() => {this.select('Artist')}}>Artists</Nav.Link>
-                                </Nav>
-                                <Nav>
-                                <Nav.Link onClick={this.logout}>Logout</Nav.Link>
-                                </Nav>
-                            </Navbar.Collapse>
-                            </Navbar>
+                <Navi buttonClick={this.select.bind(this)}/>
             </div>
 
             <div className="artist-page">
                     <h2 className="">Artists</h2>   
-                                {distinct.map((value,index) => {
+                                {this.distinct.map((value,index) => {
                                         return (
                                             <div className="row tile">   
                                                  <Col xs="12" lg="6">   
@@ -169,24 +156,12 @@ class Home extends Component {
             return(
                 <div>
                 <div>
-                <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-                            <Navbar.Brand onClick={() => {this.select('Home')}}>Musify</Navbar.Brand>
-                            <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-                            <Navbar.Collapse id="responsive-navbar-nav">
-                                <Nav className="mr-auto">
-                                <Nav.Link onClick={() => {this.select('Home')}}>Home</Nav.Link>
-                                <Nav.Link onClick={() => {this.select('Artist')}}>Artists</Nav.Link>
-                                </Nav>
-                                <Nav>
-                                <Nav.Link onClick={this.logout}>Logout</Nav.Link>
-                                </Nav>
-                            </Navbar.Collapse>
-                            </Navbar>
+                    <Navi buttonClick={this.select.bind(this)}/>
                 </div>
     
                 <div className="artist-page">
                         <h2 className="">Artists</h2>   
-                                    {distinct.map((value,index) => {
+                                    {this.distinct.map((value,index) => {
                                             return (
                                                 <div className="row tile">   
                                                     <Col xs="12" lg="2">   

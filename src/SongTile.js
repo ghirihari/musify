@@ -21,7 +21,7 @@ class SongTile extends Component {
 
     componentDidMount() {
         this.audioEl = document.getElementsByClassName("audio-element")[this.props.id];
-        console.log(this.audioEl.duration);
+        // console.log(this.audioEl.duration);
         
     }
 
@@ -48,7 +48,7 @@ class SongTile extends Component {
     render()
     {
         return(
-            <div className="row tile">   
+            <div  className="row tile">   
                 <Col xs="5" lg="6">   
                     <label className="songTitle">{this.props.song_name}</label><br></br>
                     <label className="songArtist">{this.props.song_artist}</label>

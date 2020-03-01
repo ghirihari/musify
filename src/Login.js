@@ -34,7 +34,7 @@ class Login extends Component {
     e.preventDefault();
     const email = document.querySelector('#email').value;
     const pass = document.querySelector('#pass').value;
-    console.log(email,pass)
+    // console.log(email,pass)
     firebase.auth().signInWithEmailAndPassword(email, pass).then((u)=>{
     }).catch((error) => {
         console.log(error);
