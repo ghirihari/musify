@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "baf24386bf39e68fee1a76b01a4fac34",
+    "revision": "a3a40ef6b3c8604151412900a775a96a",
     "url": "/musify/index.html"
   },
   {
@@ -8,8 +8,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/musify/static/css/2.7284ee2b.chunk.css"
   },
   {
-    "revision": "b69bf564a60cc6a3cf1c",
-    "url": "/musify/static/css/main.e534bb63.chunk.css"
+    "revision": "b53c8ca078ef0aca7a84",
+    "url": "/musify/static/css/main.ddf7f3a5.chunk.css"
   },
   {
     "revision": "fb74773e068128bce96f",
@@ -20,7 +20,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/musify/static/js/2.ea6d80cf.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "b69bf564a60cc6a3cf1c",
+    "revision": "b53c8ca078ef0aca7a84",
     "url": "/musify/static/js/main.f4e72714.chunk.js"
   },
   {
