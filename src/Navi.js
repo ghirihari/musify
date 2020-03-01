@@ -19,7 +19,7 @@ class Navi extends React.Component{
                 <Nav.Link onClick={() => {this.props.buttonClick('Artist')}}>Artists</Nav.Link>
                 </Nav>
                 <Nav>
-                <Nav.Link onClick={this.logout}>Logout</Nav.Link>
+                <Nav.Link onClick={this.props.logout}>Logout</Nav.Link>
                 </Nav>
             </Navbar.Collapse>
         </Navbar>

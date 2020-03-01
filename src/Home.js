@@ -19,8 +19,8 @@ import song9 from './audio/10.mp3';
 class Home extends Component {
     constructor(props) {
         super(props);
-       this.logout = this.logout.bind(this);
-        this.select = this.select.bind(this);
+    //    this.logout = this.logout.bind(this);
+        // this.select = this.select.bind(this);
         this.state = {
             song : null,
             click : 0,
@@ -91,7 +91,7 @@ class Home extends Component {
             {
             return (
             <div>
-                <Navi buttonClick={this.select.bind(this)}/>    
+                <Navi buttonClick={this.select.bind(this)} logout = {this.logout}/>
                 <div className="artist-page">   
                         <Row className="p-1">
                         <Col lg='4'></Col>
@@ -127,7 +127,7 @@ class Home extends Component {
          return(
             <div>
             <div>
-                <Navi buttonClick={this.select.bind(this)}/>
+            <Navi buttonClick={this.select.bind(this)} logout = {this.logout}/>
             </div>
 
             <div className="artist-page">
@@ -156,7 +156,7 @@ class Home extends Component {
             return(
                 <div>
                 <div>
-                    <Navi buttonClick={this.select.bind(this)}/>
+                <Navi buttonClick={this.select.bind(this)} logout = {this.logout}/>
                 </div>
     
                 <div className="artist-page">

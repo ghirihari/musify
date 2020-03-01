@@ -48,7 +48,7 @@ class SongTile extends Component {
     render()
     {
         return(
-            <div  className="row tile">   
+            <div key = {this.props.song_name} className="row tile">   
                 <Col xs="5" lg="6">   
                     <label className="songTitle">{this.props.song_name}</label><br></br>
                     <label className="songArtist">{this.props.song_artist}</label>
