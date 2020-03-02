@@ -3,10 +3,6 @@ import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 
 class Navi extends React.Component{
-    // constructor(props)
-    // {
-    //     super(props);
-    // }
     render()
     {
         return(

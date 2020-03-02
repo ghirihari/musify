@@ -5,9 +5,10 @@ import {Input, Form, FormGroup} from 'reactstrap';
 
 class Login extends Component {
   constructor(props) {
+    console.log(props)
     super(props);
     this.login = this.login.bind(this);
-    this.handleChange = this.handleChange.bind(this);
+    // this.handleChange = this.handleChange.bind(this);
     this.signup = this.signup.bind(this);
     this.state = { signedin: false}
   }
@@ -23,12 +24,13 @@ class Login extends Component {
       signInSuccess: () => false
     }
   }
+
   componentDidMount(){
     document.title = "Musify";
   }
-  handleChange(e) {
-    this.setState({ [e.target.name]: e.target.value });
-  }
+  // handleChange(e) {
+  //   this.setState({ [e.target.name]: e.target.value });
+  // }
 
   login(e) {
     e.preventDefault();
